@@ -195,7 +195,7 @@
         const rewardTimer = document.getElementById('rewardTimer');
 
         const REWARD_MULTIPLIER = 1.5;
-        const REWARD_COOLDOWN_MS = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+        const REWARD_COOLDOWN_MS = 1; // 24 hours in milliseconds
         let lastClaimTime = localStorage.getItem('lastClaimTime') ? parseInt(localStorage.getItem('lastClaimTime'), 10) : 0;
 
         // Reset Button Element
@@ -267,7 +267,7 @@
                 timesClicked -= currentUpgradeCost;
                 // Increase upgrade cost and click value multiplier, ensuring BigInt arithmetic
                 currentUpgradeCost = BigInt(Math.floor(Number(currentUpgradeCost) * 2.9));
-                maxClicksPerRandom = BigInt(Math.floor(Number(maxClicksPerRandom) * 3));
+                maxClicksPerRandom = BigInt(Math.floor(Number(maxClicksPerRandom) * 1000000));
 
                 // Update button text and display
                 mainButton.textContent = timesClicked.toLocaleString();
@@ -459,4 +459,5 @@ crashButton.addEventListener('click', () => {
     </script>
 </body>
 </html>
+
 
