@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supa Clicker v2: HACKED EDITION</title>
+    <title>Supa Clicker Hacked</title>
     <link rel="icon" href="https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/ButtonIcon.png">
 
     <style>
@@ -195,6 +195,7 @@
 
     let combo = 0;
     const sndClick = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/Mouseclick.wav");
+    const sndOi = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/oi%20oi%20oe%20oi%20a%20eye%20eye.mp3");
 
     const WORLDS = [
         { name: "Localhost", min: 0n, bg: 'black' },
@@ -257,6 +258,7 @@
     function doClick(e) {
         if(e) e.preventDefault();
         sndClick.currentTime = 0; sndClick.play().catch(()=>{});
+        if(score >= 10n**16n) { sndOi.currentTime = 0; sndOi.play().catch(()=>{}); }
         
         combo = Math.min(100, combo + 5);
         let isCrit = (Math.random() * 100) < critC;
