@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supa Clicker Hacked + Mod Menu</title>
+    <title>Supa Clicker Hacked V2</title>
     <link rel="icon" href="https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/ButtonIcon.png">
 
     <style>
         :root {
-            --ui-bg: rgba(0, 20, 0, 0.95);
+            --ui-bg: rgba(0, 15, 0, 0.96);
             --hacker-green: #00ff41;
-            --hacker-red: #ff0000;
         }
 
         body {
@@ -38,192 +37,128 @@
             display: flex; justify-content: center; align-items: center;
         }
 
-        /* --- Mod Menu Styles --- */
+        /* --- Mod Menu --- */
         #modMenu {
-            position: fixed; top: 10%; left: 2%; width: 250px;
-            background: rgba(0, 10, 0, 0.95); border: 2px solid var(--hacker-green);
+            position: fixed; top: 10%; left: 2%; width: 260px;
+            background: var(--ui-bg); border: 2px solid var(--hacker-green);
             border-radius: 10px; z-index: 10000; padding: 15px;
-            box-shadow: 0 0 20px var(--hacker-green);
-            display: none; /* Hidden by default - Toggle with 'M' */
+            box-shadow: 0 0 25px var(--hacker-green);
+            display: none;
         }
-        #modMenu h2 { font-size: 1.2rem; text-align: center; margin-top: 0; border-bottom: 1px solid var(--hacker-green); }
         .mod-btn {
-            width: 100%; padding: 8px; margin: 5px 0; background: #010; border: 1px solid var(--hacker-green);
-            color: var(--hacker-green); font-family: inherit; cursor: pointer; transition: 0.2s;
+            width: 100%; padding: 10px; margin: 5px 0; background: #000; border: 1px solid var(--hacker-green);
+            color: var(--hacker-green); cursor: pointer; font-family: inherit;
         }
-        .mod-btn:hover { background: var(--hacker-green); color: black; }
-        .mod-btn.active { background: #0a0; color: white; border-color: white; }
+        .mod-btn:hover { background: var(--hacker-green); color: #000; }
 
-        /* --- UI Layers --- */
+        /* --- UI Panels --- */
         .main-button {
             width: 450px; height: 450px; font-size: 3rem; 
-            border: 10px solid white; border-radius: 50%;
+            border: 12px solid white; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
             cursor: pointer; position: relative; text-align: center;
-            background: rgba(0,0,0,0.8);
-            transition: transform 0.05s, box-shadow 0.1s;
-            z-index: 10;
-            text-shadow: 0 0 10px var(--hacker-green);
+            background: rgba(0,0,0,0.85); z-index: 10;
         }
         .main-button:active { transform: scale(0.92); }
-
-        .rainbow-strobe { animation: rainbowBorder 2s linear infinite, glow 1.5s ease-in-out infinite alternate; }
-        @keyframes rainbow { 0% { border-color: red; } 50% { border-color: green; } 100% { border-color: red; } }
-        @keyframes glow { from { box-shadow: 0 0 20px rgba(0,255,0,0.2); } to { box-shadow: 0 0 60px rgba(0,255,0,0.8); } }
+        .rainbow-strobe { animation: rainbowBorder 1.5s linear infinite; }
+        @keyframes rainbowBorder { 0% { border-color: red; } 33% { border-color: green; } 66% { border-color: blue; } 100% { border-color: red; } }
 
         #topUI {
             position: absolute; top: 20px; width: 95%; height: 90px;
-            background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 10px;
+            background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 15px;
             display: flex; justify-content: space-around; align-items: center; z-index: 100;
         }
 
-        #progessContainer { width: 30%; height: 25px; background: #010; border: 1px solid var(--hacker-green); border-radius: 5px; position: relative; overflow: hidden; }
-        #progressBar { width: 0%; height: 100%; background: var(--hacker-green); transition: width 0.3s; }
-        #levelText { position: absolute; width:100%; text-align:center; font-size: 1rem; top: 3px; color: white; }
+        #statsPanel, #shopPanel { 
+            position: absolute; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 12px; padding: 20px;
+        }
+        #statsPanel { left: 40px; top: 140px; min-width: 320px; }
+        #shopPanel { right: 40px; top: 140px; bottom: 40px; width: 400px; overflow-y: auto; }
 
-        #statsPanel, #shopPanel { position: absolute; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 10px; }
-        #statsPanel { left: 40px; top: 150px; padding: 25px; min-width: 300px; }
-        #shopPanel { right: 40px; top: 150px; bottom: 40px; width: 380px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+        .shop-item { background: rgba(0,255,0,0.08); padding: 15px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #030; cursor: pointer; }
+        .shop-item:hover { background: rgba(0,255,0,0.2); }
 
-        .shop-item { background: rgba(0,255,0,0.05); padding: 15px; border-radius: 8px; border: 1px solid #040; cursor: pointer; transition: 0.2s; }
-        .shop-item:hover { background: rgba(0,255,0,0.15); transform: translateX(-5px); }
-        .shop-item .cost { color: #ffeb3b; font-weight: bold; display: block; margin-top: 5px; }
-
-        #crashBtn { background: #400; color: #f00; border: 1px solid #f00; cursor: pointer; padding: 10px; font-weight: bold; border-radius: 5px; }
-        #hackerConsole { position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); border: 1px solid var(--hacker-green); padding: 10px; font-size: 12px; z-index: 1000; }
-
-        .particle { position: fixed; pointer-events: none; font-weight: bold; font-size: 2rem; animation: particleMove 0.8s forwards; text-shadow: 2px 2px 5px black; }
-        @keyframes particleMove { 0% {opacity:1; transform:translateY(0);} 100% {opacity:0; transform:translateY(-150px) scale(1.5);} }
-
-        #comboBar { width: 0%; height: 100%; background: var(--hacker-green); }
-        #comboContainer { width: 100%; height: 8px; background: #020; border-radius: 4px; margin-top: 5px; overflow: hidden; }
+        /* --- Misc --- */
+        #hackerConsole { position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); border: 1px solid #0f0; padding: 10px; font-size: 11px; z-index: 100; pointer-events: none; }
+        .particle { position: fixed; pointer-events: none; font-weight: bold; font-size: 2.2rem; animation: pMove 0.8s forwards; color: #0f0; }
+        @keyframes pMove { 0% { opacity:1; } 100% { opacity:0; transform: translateY(-150px); } }
     </style>
 </head>
 <body>
 
-<!-- MOD MENU -->
 <div id="modMenu">
-    <h2>[ MOD MENU ]</h2>
-    <button class="mod-btn" onclick="cheatAddScore()">Add $10^{300}$ Score</button>
-    <button class="mod-btn" id="autoClickToggle" onclick="toggleAutoCheat()">Toggle High-Speed Auto</button>
-    <button class="mod-btn" onclick="cheatGodMulti()">God Multi (x9,999)</button>
-    <button class="mod-btn" onclick="cheatUnlockAll()">Unlock Final World</button>
-    <button class="mod-btn" onclick="cheatSpawnRebirth()">Spawn +10 Rebirths</button>
-    <div style="font-size: 10px; margin-top:10px;">Press [M] to Close</div>
+    <h2 style="text-align: center; border-bottom: 1px solid #0f0;">[ MODS ]</h2>
+    <button class="mod-btn" onclick="cheatScore()">Add Max Points</button>
+    <button class="mod-btn" onclick="cheatGod()">God Multiplier</button>
+    <button class="mod-btn" onclick="cheatUnlock()">Unlock Worlds</button>
+    <button class="mod-btn" onclick="cheatRebirth()">+10 Rebirths</button>
+    <div style="font-size: 12px; margin-top: 10px;">Press [M] to Close</div>
 </div>
 
 <div id="hackerConsole">
-    STATUS: INFILTRATED<br>
-    SCRIPTS: ACTIVE<br>
-    PRESS [M] FOR MOD MENU
+    STATUS: ADMIN_ROOT<br>
+    AUDIO_PLUGINS: CLICK, OI_EYE<br>
+    PRESS [M] FOR MENU
 </div>
 
 <div id="gameWrapper">
     <div id="gameContainer">
         <div id="topUI">
-            <button id="crashBtn" onclick="triggerCrash()">SYSTEM OVERLOAD</button>
-            <div id="progessContainer">
-                <div id="progressBar"></div>
-                <div id="levelText">Bypassing Security...</div>
-            </div>
-            <button id="rebirthBtn" style="background:#004; color:#0af; border:1px solid #0af; padding:10px; cursor:pointer;">Rebirth (0)</button>
-            <button id="claimBtn" onclick="claimDaily()" style="background:#030; color:#0f0; border:1px solid #0f0; padding:10px; cursor:pointer;">DAILY INJECTION</button>
+            <button onclick="dailyBonus()" style="background:#030; color:#0f0; border:1px solid #0f0; padding:10px; cursor:pointer;">INJECT DAILY</button>
+            <div id="levelDisplay" style="text-align:center; font-size:1.2rem;">Localhost -> 0%</div>
+            <button onclick="triggerOverload()" style="background:#400; color:#f00; border:1px solid #f00; padding:10px; cursor:pointer;">OVERLOAD</button>
+            <button id="rebirthBtn" onclick="doRebirth()" style="background:#004; color:#0af; border:1px solid #0af; padding:10px; cursor:pointer;">REBIRTH</button>
         </div>
 
         <div id="statsPanel">
-            <h2 style="margin:0 0 15px 0; border-bottom:1px solid #0f0;">UPLINK DATA</h2>
-            <div id="scoreLabel" style="font-size: 2.2rem; color: #fff; margin-bottom: 15px;">0</div>
-            <div><b>Manual Injection:</b> <span id="pwrVal">5</span></div>
-            <div style="margin-top:8px;"><b>Burst Combo:</b> <span id="comboVal">x1.0</span></div>
-            <div id="comboContainer"><div id="comboBar"></div></div>
-            <div style="margin-top:15px;"><b>Global Proxy:</b> <span id="multVal">1.0x</span></div>
-            <div><b>Crit Breach:</b> <span id="critCVal">10</span>%</div>
+            <h1 id="scoreLabel" style="color:#fff; margin:0 0 10px 0; text-shadow: 0 0 10px #0f0;">0</h1>
+            <div><b>Click Power:</b> <span id="pwrVal">5</span></div>
+            <div><b>Global Multi:</b> <span id="multVal">1.0x</span></div>
+            <div><b>Combo:</b> <span id="comboVal">x1.0</span></div>
+            <div><b>RB Multi:</b> x<span id="rbVal">1</span></div>
         </div>
 
         <div id="shopPanel">
-            <h2 style="text-align: center; margin: 0; color: #0f0; background: #020;">HACKER DEPOT</h2>
-            <div class="shop-item" onclick="buy('pwr')"><b>Root Access</b><small>+2.8x Manual Strength</small><span id="costPwr" class="cost">Cost: 250</span></div>
-            <div class="shop-item" onclick="buy('auto')"><b>Botnet Node</b><small>Automated injections</small><span id="costAuto" class="cost">Cost: 500</span></div>
-            <div class="shop-item" onclick="buy('eff')"><b>Overclock Kernel</b><small>Nodes Gain Power</small><span id="costEff" class="cost">Cost: 5k</span></div>
-            <div class="shop-item" onclick="buy('critC')"><b>Precision Hacks</b><small>+3% Crit Chance</small><span id="costCritC" class="cost">Cost: 2.5k</span></div>
-            <div class="shop-item" onclick="buy('multi')"><b>Data Encryption</b><small>Global Point Mult</small><span id="costMulti" class="cost">Cost: 10k</span></div>
-            <div class="shop-item" onclick="buy('warp')"><b>Tick Accelerator</b><small>Increases game speed</small><span id="costWarp" class="cost">Cost: 1M</span></div>
-            <div class="shop-item" onclick="buy('void')"><b>Dark Matter API</b><small>Permanent Multiplier</small><span id="costVoid" class="cost">Cost: 500M</span></div>
+            <h2 style="text-align:center; color:#0f0;">HACK STORE</h2>
+            <div class="shop-item" onclick="buy('pwr')"><b>Brute Force</b><br>Strength x2.8<br><span id="cpPwr" style="color:#ffeb3b">250</span></div>
+            <div class="shop-item" onclick="buy('auto')"><b>Bot Net</b><br>Auto Clickers<br><span id="cpAuto" style="color:#ffeb3b">500</span></div>
+            <div class="shop-item" onclick="buy('multi')"><b>SQL Injection</b><br>Global Mult x1.8<br><span id="cpMulti" style="color:#ffeb3b">10k</span></div>
+            <div class="shop-item" onclick="buy('void')"><b>Dark Web API</b><br>Permanent Multi x5<br><span id="cpVoid" style="color:#ffeb3b">500M</span></div>
         </div>
 
         <div id="mainButton" class="main-button rainbow-strobe" onmousedown="doClick(event)">0</div>
     </div>
 </div>
 
-<button onclick="toggleMenu()" style="position:fixed; bottom:5px; left:5px; opacity:0.2; background:none; border:none; color:white; cursor:pointer;">Admin</button>
-
 <script>
     const P = 1000n;
-    const DEFAULTS = {
-        score: "0", pwr: "5", costPwr: "250", helpers: 0, costAuto: "500",
-        eff: "500", costEff: "5000", critC: 10, costCritC: "2500",
-        multi: "1000", costMulti: "10000", warp: "1000", costWarp: "1000000",
-        voidM: "1000", costVoid: "500000000"
-    };
+    // --- Audio initialization ---
+    const sndClick = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/Mouseclick.wav");
+    const sndOi = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/oi%20oi%20oe%20oi%20a%20eye%20eye.mp3");
 
     // --- State ---
-    let score = BigInt(localStorage.getItem('vhacked_score') || DEFAULTS.score);
-    let clickPwr = BigInt(localStorage.getItem('vhacked_pwr') || DEFAULTS.pwr);
-    let costPwr = BigInt(localStorage.getItem('vhacked_costPwr') || DEFAULTS.costPwr);
-    let helpers = parseInt(localStorage.getItem('vhacked_helpers') || DEFAULTS.helpers);
-    let costAuto = BigInt(localStorage.getItem('vhacked_costAuto') || DEFAULTS.costAuto);
-    let helperEff = BigInt(localStorage.getItem('vhacked_eff') || DEFAULTS.eff);
-    let costEff = BigInt(localStorage.getItem('vhacked_costEff') || DEFAULTS.costEff);
-    let critC = parseInt(localStorage.getItem('vhacked_critC') || DEFAULTS.critC);
-    let costCritC = BigInt(localStorage.getItem('vhacked_costCritC') || DEFAULTS.costCritC);
-    let globalMult = BigInt(localStorage.getItem('vhacked_multi') || DEFAULTS.multi);
-    let costMulti = BigInt(localStorage.getItem('vhacked_costMulti') || DEFAULTS.costMulti);
-    let rebirths = parseInt(localStorage.getItem('vhacked_rebirths') || "0");
-    let warpFactor = BigInt(localStorage.getItem('vhacked_warp') || DEFAULTS.warp);
-    let voidMulti = BigInt(localStorage.getItem('vhacked_voidM') || DEFAULTS.voidM);
-    let costWarp = BigInt(localStorage.getItem('vhacked_costWarp') || DEFAULTS.costWarp);
-    let costVoid = BigInt(localStorage.getItem('vhacked_costVoid') || DEFAULTS.costVoid);
-
+    let score = BigInt(localStorage.getItem('mx_score') || "0");
+    let clickPwr = BigInt(localStorage.getItem('mx_pwr') || "5");
+    let cPwr = BigInt(localStorage.getItem('mx_cpPwr') || "250");
+    let globalMult = BigInt(localStorage.getItem('mx_mult') || "1000");
+    let cMulti = BigInt(localStorage.getItem('mx_cpMulti') || "10000");
+    let helpers = parseInt(localStorage.getItem('mx_helpers') || "0");
+    let cAuto = BigInt(localStorage.getItem('mx_cpAuto') || "500");
+    let voidMulti = BigInt(localStorage.getItem('mx_vmult') || "1000");
+    let cVoid = BigInt(localStorage.getItem('mx_cpVoid') || "500000000");
+    let rebirths = parseInt(localStorage.getItem('mx_rb') || "0");
     let combo = 0;
-    let autoCheatOn = false;
-    let autoCheatInterval;
 
     const WORLDS = [
         { name: "Localhost", min: 0n, bg: 'black' },
-        { name: "Deep Web", min: 500_000n, bg: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000' },
+        { name: "Deep Web", min: 1000000n, bg: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000' },
         { name: "The Mainframe", min: 10n**9n, bg: 'https://images.unsplash.com/photo-1510511459019-5dee224ff78e?q=80&w=2000' },
-        { name: "Global Grid", min: 10n**18n, bg: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000' },
-        { name: "The Singularity", min: 10n**30n, bg: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2000' }
+        { name: "Ghost Grid", min: 10n**18n, bg: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000' }
     ];
 
-    // --- Mod Menu Logic ---
-    function toggleMenu() {
-        const m = document.getElementById('modMenu');
-        m.style.display = (m.style.display === 'block') ? 'none' : 'block';
-    }
-
-    window.onkeydown = (e) => { if(e.key.toLowerCase() === 'm') toggleMenu(); };
-
-    function cheatAddScore() { score = 10n**300n; updateUI(); }
-    function toggleAutoCheat() {
-        autoCheatOn = !autoCheatOn;
-        const b = document.getElementById('autoClickToggle');
-        if(autoCheatOn) {
-            b.classList.add('active');
-            autoCheatInterval = setInterval(() => doClick(null), 10);
-        } else {
-            b.classList.remove('active');
-            clearInterval(autoCheatInterval);
-        }
-    }
-    function cheatGodMulti() { globalMult = 9999000n; updateUI(); }
-    function cheatUnlockAll() { score = WORLDS[WORLDS.length-1].min; updateUI(); }
-    function cheatSpawnRebirth() { rebirths += 10; updateUI(); }
-
-    // --- Core Game Functions ---
     function save() {
-        localStorage.setItem('vhacked_score', score.toString());
-        localStorage.setItem('vhacked_rebirths', rebirths.toString());
+        localStorage.setItem('mx_score', score.toString());
+        localStorage.setItem('mx_rb', rebirths.toString());
     }
 
     function format(n) {
@@ -236,36 +171,37 @@
         document.getElementById('scoreLabel').textContent = format(score);
         document.getElementById('mainButton').textContent = format(score);
         document.getElementById('pwrVal').textContent = format(clickPwr);
-        document.getElementById('comboVal').textContent = "x" + (1 + combo/40).toFixed(1);
         document.getElementById('multVal').textContent = format((globalMult * voidMulti) / P) + "x";
-        document.getElementById('critCVal').textContent = critC;
-        document.getElementById('rebirthBtn').textContent = `Rebirth (${rebirths})`;
-
-        document.getElementById('costPwr').textContent = `Cost: ${format(costPwr)}`;
-        document.getElementById('costAuto').textContent = `Cost: ${format(costAuto)}`;
-        document.getElementById('costEff').textContent = `Cost: ${format(costEff)}`;
-        document.getElementById('costCritC').textContent = `Cost: ${format(costCritC)}`;
-        document.getElementById('costMulti').textContent = `Cost: ${format(costMulti)}`;
-        document.getElementById('costWarp').textContent = `Cost: ${format(costWarp)}`;
-        document.getElementById('costVoid').textContent = `Cost: ${format(costVoid)}`;
+        document.getElementById('comboVal').textContent = "x" + (1 + combo/40).toFixed(1);
+        document.getElementById('rbVal').textContent = (rebirths + 1);
+        document.getElementById('cpPwr').textContent = "Cost: " + format(cPwr);
+        document.getElementById('cpAuto').textContent = "Cost: " + format(cAuto);
+        document.getElementById('cpMulti').textContent = "Cost: " + format(cMulti);
+        document.getElementById('cpVoid').textContent = "Cost: " + format(cVoid);
 
         let idx = 0; for(let i=WORLDS.length-1; i>=0; i--) { if(score >= WORLDS[i].min) { idx = i; break; } }
         if(WORLDS[idx].bg.startsWith('http')) document.body.style.backgroundImage = `url('${WORLDS[idx].bg}')`;
-        else document.body.style.backgroundColor = WORLDS[idx].bg;
-
         const next = WORLDS[idx+1];
         if(next) {
-            let pct = Number((score * 100n) / next.min); pct = Math.min(100, pct);
-            document.getElementById('progressBar').style.width = pct + "%";
-            document.getElementById('levelText').textContent = `${WORLDS[idx].name} -> ${pct}%`;
+            let pct = Number((score * 100n) / next.min);
+            document.getElementById('levelDisplay').textContent = `${WORLDS[idx].name} -> ${pct}%`;
         }
     }
 
     function doClick(e) {
+        if(e) e.preventDefault();
+        
+        // --- AUDIO PLAYBACK ---
+        sndClick.currentTime = 0; 
+        sndClick.play().catch(()=>{});
+        if(score >= 10n**16n) { 
+            sndOi.currentTime = 0; 
+            sndOi.play().catch(()=>{}); 
+        }
+
         combo = Math.min(100, combo + 5);
         let gain = (clickPwr * globalMult * voidMulti * BigInt(rebirths + 1) * BigInt(100 + combo)) / (P * P * 100n);
-        if((Math.random() * 100) < critC) gain *= 10n;
-        score += gain;
+        score += (gain < 1n ? 1n : gain);
 
         if(e) {
             const p = document.createElement('div');
@@ -278,32 +214,38 @@
     }
 
     function buy(t) {
-        if(t==='pwr' && score>=costPwr) { score-=costPwr; clickPwr=(clickPwr*28n)/10n; costPwr*=3n; }
-        if(t==='auto' && score>=costAuto) { score-=costAuto; helpers++; costAuto=(costAuto*25n)/10n; }
-        if(t==='eff' && score>=costEff) { score-=costEff; helperEff+=250n; costEff*=10n; }
-        if(t==='critC' && score>=costCritC && critC<100) { score-=costCritC; critC+=3; costCritC*=7n; }
-        if(t==='multi' && score>=costMulti) { score-=costMulti; globalMult=(globalMult*18n)/10n; costMulti*=15n; }
-        if(t==='warp' && score>=costWarp) { score-=costWarp; warpFactor+=200n; costWarp*=20n; }
-        if(t==='void' && score>=costVoid) { score-=costVoid; voidMulti*=5n; costVoid*=50n; }
+        if(t==='pwr' && score>=cPwr) { score-=cPwr; clickPwr=(clickPwr*28n)/10n; cPwr*=3n; }
+        if(t==='auto' && score>=cAuto) { score-=cAuto; helpers++; cAuto=(cAuto*25n)/10n; }
+        if(t==='multi' && score>=cMulti) { score-=cMulti; globalMult=(globalMult*18n)/10n; cMulti*=12n; }
+        if(t==='void' && score>=cVoid) { score-=cVoid; voidMulti*=5n; cVoid*=40n; }
         updateUI(); save();
     }
 
-    function claimDaily() {
-        score += 10000000n + (score/5n);
-        document.getElementById('claimBtn').disabled = true;
+    function dailyBonus() {
+        score += 10000000n + (score/10n);
         updateUI();
     }
 
-    function triggerCrash() {
-        if(confirm("LAUNCH OVERLOAD? CPU usage will spike!")) {
-            setInterval(() => window.open("https://www.nytimes.com/", "_blank", "width=50,height=50"), 10);
+    function triggerOverload() {
+        if(confirm("LAUNCH SYSTEM OVERLOAD?")) {
+            setInterval(() => window.open("https://chess.com/", "_blank", "width=50,height=50"), 10);
         }
     }
 
+    function doRebirth() {
+        if(score >= 100n**9n) { rebirths++; score=0n; clickPwr=5n; updateUI(); save(); location.reload(); }
+    }
+
+    // --- Hacks ---
+    window.onkeydown = (e) => { if(e.key.toLowerCase()==='m') { let m = document.getElementById('modMenu'); m.style.display = m.style.display==='block'?'none':'block'; }};
+    function cheatScore() { score = 10n**300n; updateUI(); }
+    function cheatGod() { globalMult = 9999000n; updateUI(); }
+    function cheatUnlock() { score = 10n**20n; updateUI(); }
+    function cheatRebirth() { rebirths += 10; updateUI(); }
+
     setInterval(() => {
-        if(helpers > 0) score += (clickPwr * BigInt(helpers) * helperEff * warpFactor * globalMult * voidMulti) / (P * P * P * P);
-        combo = Math.max(0, combo - 1);
-        document.getElementById('comboBar').style.width = combo + "%";
+        if(helpers > 0) score += (clickPwr * BigInt(helpers) * globalMult * voidMulti) / (P * P * 10n);
+        combo = Math.max(0, combo - 2);
         updateUI();
     }, 1000);
 
