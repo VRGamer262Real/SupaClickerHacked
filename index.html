@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supa Clicker HACKED</title>
+    <title>Supa Clicker: UNLIMITED HACKED</title>
     <link rel="icon" href="https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/ButtonIcon.png">
 
     <style>
@@ -25,70 +25,33 @@
             transition: background-image 1.2s ease-in-out;
         }
 
-        #gameWrapper {
-            width: 100vw; height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            overflow: hidden;
-        }
-
-        #gameContainer {
-            width: 1600px; height: 900px;
-            position: relative; flex-shrink: 0;
-            transform-origin: center center;
-            display: flex; justify-content: center; align-items: center;
-        }
+        #gameWrapper { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        #gameContainer { width: 1600px; height: 900px; position: relative; flex-shrink: 0; transform-origin: center center; display: flex; justify-content: center; align-items: center; }
 
         /* --- Mod Menu --- */
-        #modMenu {
-            position: fixed; top: 10%; left: 2%; width: 280px;
-            background: var(--ui-bg); border: 2px solid var(--hacker-green);
-            border-radius: 10px; z-index: 10000; padding: 15px;
-            box-shadow: 0 0 30px var(--hacker-green);
-            display: none;
-        }
-        .mod-btn {
-            width: 100%; padding: 10px; margin: 5px 0; background: #000; border: 1px solid var(--hacker-green);
-            color: var(--hacker-green); cursor: pointer; font-family: inherit; font-size: 11px;
-        }
+        #modMenu { position: fixed; top: 10%; left: 2%; width: 280px; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 10px; z-index: 10000; padding: 15px; box-shadow: 0 0 30px var(--hacker-green); display: none; }
+        .mod-btn { width: 100%; padding: 10px; margin: 5px 0; background: #000; border: 1px solid var(--hacker-green); color: var(--hacker-green); cursor: pointer; font-family: inherit; font-size: 11px; }
         .mod-btn:hover { background: var(--hacker-green); color: #000; }
 
         /* --- UI Layers --- */
-        .main-button {
-            width: 420px; height: 420px; font-size: 2.8rem; 
-            border: 12px solid white; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            cursor: pointer; position: relative; text-align: center;
-            background: rgba(0,0,0,0.85); z-index: 10;
-            transition: transform 0.05s;
-            text-shadow: 0 0 10px var(--hacker-green);
-        }
+        .main-button { width: 420px; height: 420px; font-size: 2rem; border: 12px solid white; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; text-align: center; background: rgba(0,0,0,0.85); z-index: 10; transition: transform 0.05s; text-shadow: 0 0 10px var(--hacker-green); }
         .main-button:active { transform: scale(0.92); }
         .rainbow-strobe { animation: borderRainbow 2s linear infinite; }
         @keyframes borderRainbow { 0% {border-color: red;} 33% {border-color: green;} 66% {border-color: blue;} 100% {border-color: red;} }
 
-        #topUI {
-            position: absolute; top: 20px; width: 95%; height: 90px;
-            background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 15px;
-            display: flex; justify-content: space-around; align-items: center; z-index: 100;
-        }
-
+        #topUI { position: absolute; top: 20px; width: 95%; height: 90px; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 15px; display: flex; justify-content: space-around; align-items: center; z-index: 100; }
         #statsPanel { left: 40px; top: 140px; min-width: 320px; position: absolute; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 12px; padding: 25px; }
         #shopPanel { right: 40px; top: 140px; bottom: 40px; width: 380px; position: absolute; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 12px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;}
 
         .shop-item { background: rgba(0, 255, 0, 0.05); padding: 12px; border-radius: 8px; border: 1px solid #141; cursor: pointer; transition: 0.2s; }
         .shop-item:hover { background: rgba(0, 255, 0, 0.15); transform: translateX(-5px); }
         .shop-item b { color: var(--hacker-green); font-size: 1.1rem; }
-        .shop-item small { display: block; color: #aaa; font-size: 0.85rem; margin-top: 2px; }
         .cost { color: #ffeb3b; font-weight: bold; margin-top: 5px; display: block; }
-
-        #progressBar { width: 0%; height: 100%; background: var(--hacker-green); transition: width 0.3s; }
-        #progBox { width: 30%; height: 25px; background: #010; border: 1px solid var(--hacker-green); position: relative; overflow: hidden; }
-
+        
         .particle { position: fixed; pointer-events: none; font-weight: bold; font-size: 2.2rem; animation: pMove 0.8s forwards; z-index: 1000; }
         @keyframes pMove { 0% { opacity:1; } 100% { opacity:0; transform: translateY(-160px) scale(1.4); } }
-        
-        #comboBar { width: 0%; height: 100%; background: #0af; }
         #cbCont { width: 100%; height: 8px; background: #020; border-radius: 4px; margin-top: 5px; overflow: hidden; }
+        #comboBar { width: 0%; height: 100%; background: #0af; }
     </style>
 </head>
 <body>
@@ -99,17 +62,14 @@
     <button class="mod-btn" onclick="cheatGod()">Activate God Mode Multi</button>
     <button class="mod-btn" onclick="cheatLevel()">Unlock Final Firewall</button>
     <button class="mod-btn" onclick="cheatRebirth()">Spawn 10x Rebirths</button>
-    <div style="font-size: 10px; color: #888; text-align:center;">Press [M] to Close Control</div>
 </div>
 
 <div id="gameWrapper">
     <div id="gameContainer">
         <div id="topUI">
             <button onclick="claimDaily()" style="background:#030; color:#0f0; border:1px solid #0f0; padding:10px; cursor:pointer;">DAILY INJECTION</button>
-            <div id="progBox"><div id="progressBar"></div><div id="levelText" style="position:absolute; width:100%; text-align:center; top:3px; font-size:12px; color:white;">Bypassing...</div></div>
             <button id="rebirthBtn" onclick="doRebirth()" style="background:#004; color:#0af; border:1px solid #0af; padding:10px; cursor:pointer;">REBIRTH</button>
             <button onclick="triggerOverload()" style="background:#400; color:#f00; border:1px solid #f00; padding:10px; cursor:pointer; font-weight:bold;">OVERLOAD</button>
-            <button id="resetBtn" onclick="fullReset()" style="background:#222; border:none; color:#f00; padding:5px; cursor:pointer; font-size:10px;">RESET</button>
         </div>
 
         <div id="statsPanel">
@@ -117,10 +77,8 @@
             <div id="scoreLabel" style="font-size: 2.5rem; margin-bottom: 20px; color: white; text-shadow: 0 0 10px #0f0;">0</div>
             <div><b>Power:</b> <span id="pwrVal">5</span></div>
             <div><b>Multiplier:</b> <span id="multVal">1.0x</span></div>
-            <div><b>Crit:</b> <span id="critCVal">10</span>% / <span id="critDVal">10</span>x</div>
-            <div style="margin-top:10px;"><b>Combo:</b> <span id="comboVal">x1.0</span></div>
+            <div><b>Combo:</b> <span id="comboVal">x1.0</span></div>
             <div id="cbCont"><div id="comboBar"></div></div>
-            <div style="margin-top:10px;"><b>Bots:</b> <span id="botVal">0</span></div>
             <div><b>Rebirths:</b> <span id="rbVal">0</span></div>
         </div>
 
@@ -128,12 +86,7 @@
             <h3 style="text-align:center; margin:0 0 10px 0;">[ SHOP: EXPLOITS ]</h3>
             <div class="shop-item" onclick="buy('pwr')"><b>Root Surge</b><small>+2.8x Manual Strength</small><span id="costPwr" class="cost">250</span></div>
             <div class="shop-item" onclick="buy('auto')"><b>Botnet Node</b><small>Automated injection</small><span id="costAuto" class="cost">500</span></div>
-            <div class="shop-item" onclick="buy('eff')"><b>Overclock Kernel</b><small>Bots gain 25% Power</small><span id="costEff" class="cost">5k</span></div>
-            <div class="shop-item" onclick="buy('critC')"><b>Precision Breach</b><small>+3% Crit Chance</small><span id="costCritC" class="cost">2.5k</span></div>
-            <div class="shop-item" onclick="buy('critD')"><b>Payload Multiplier</b><small>Increases Crit Damage</small><span id="costCritD" class="cost">25k</span></div>
             <div class="shop-item" onclick="buy('multi')"><b>SQL Injection</b><small>Global Point Multiplier</small><span id="costMulti" class="cost">10k</span></div>
-            <div class="shop-item" onclick="buy('decay')"><b>Cache Formula</b><small>Combo decays slower</small><span id="costDecay" class="cost">250k</span></div>
-            <div class="shop-item" onclick="buy('warp')"><b>Tick Manipulator</b><small>Increases Tick Speed</small><span id="costWarp" class="cost">1M</span></div>
             <div class="shop-item" onclick="buy('void')"><b>Dark Web API</b><small>Huge permanent multiplier</small><span id="costVoid" class="cost">500M</span></div>
         </div>
 
@@ -146,53 +99,30 @@
     const sndClick = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/Mouseclick.wav");
     const sndOi = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/oi%20oi%20oe%20oi%20a%20eye%20eye.mp3");
 
-    // --- State Initialization ---
     let score = BigInt(localStorage.getItem('f_score') || "0");
     let clickPwr = BigInt(localStorage.getItem('f_pwr') || "5");
     let costPwr = BigInt(localStorage.getItem('f_costPwr') || "250");
     let helpers = parseInt(localStorage.getItem('f_helpers') || "0");
     let costAuto = BigInt(localStorage.getItem('f_costAuto') || "500");
-    let helperEff = BigInt(localStorage.getItem('f_eff') || "500");
-    let costEff = BigInt(localStorage.getItem('f_costEff') || "5000");
-    let critC = parseInt(localStorage.getItem('f_critC') || "10");
-    let costCritC = BigInt(localStorage.getItem('f_costCritC') || "2500");
-    let critD = parseInt(localStorage.getItem('f_critD') || "10");
-    let costCritD = BigInt(localStorage.getItem('f_costCritD') || "25000");
     let globalMult = BigInt(localStorage.getItem('f_multi') || "1000");
     let costMulti = BigInt(localStorage.getItem('f_costMulti') || "10000");
-    let comboDecay = parseFloat(localStorage.getItem('f_decay') || "2.5");
-    let costDecay = BigInt(localStorage.getItem('f_costDecay') || "250000");
-    let warpFactor = BigInt(localStorage.getItem('f_warp') || "1000");
-    let costWarp = BigInt(localStorage.getItem('f_costWarp') || "1000000");
     let voidMulti = BigInt(localStorage.getItem('f_void') || "1000");
     let costVoid = BigInt(localStorage.getItem('f_costVoid') || "500000000");
     let rebirths = parseInt(localStorage.getItem('f_rb') || "0");
     let combo = 0;
 
-    const WORLDS = [
-        { name: "Localhost", min: 0n, bg: 'black' },
-        { name: "Deep Web", min: 1000000n, bg: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000' },
-        { name: "Mainframe", min: 10n**9n, bg: 'https://images.unsplash.com/photo-1510511459019-5dee224ff78e?q=80&w=2000' },
-        { name: "Ghost Grid", min: 10n**18n, bg: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000' }
-    ];
-
+    // --- IMPROVED FORMATTER FOR BIGINT ---
     function format(n) {
+        if (n < 1000000000000n) return n.toLocaleString();
         let s = n.toString();
-        if (s.length <= 9) return parseInt(s).toLocaleString();
-        return s.substring(0, 3) + "." + s.substring(3, 5) + "e+" + (s.length - 3);
+        let e = s.length - 1;
+        return s.substring(0, 3) + "." + s.substring(3, 5) + "e+" + e;
     }
 
     function save() {
-        localStorage.setItem('f_score', score.toString()); localStorage.setItem('f_pwr', clickPwr.toString());
-        localStorage.setItem('f_costPwr', costPwr.toString()); localStorage.setItem('f_helpers', helpers.toString());
-        localStorage.setItem('f_costAuto', costAuto.toString()); localStorage.setItem('f_eff', helperEff.toString());
-        localStorage.setItem('f_costEff', costEff.toString()); localStorage.setItem('f_critC', critC.toString());
-        localStorage.setItem('f_costCritC', costCritC.toString()); localStorage.setItem('f_critD', critD.toString());
-        localStorage.setItem('f_costCritD', costCritD.toString()); localStorage.setItem('f_multi', globalMult.toString());
-        localStorage.setItem('f_costMulti', costMulti.toString()); localStorage.setItem('f_decay', comboDecay.toString());
-        localStorage.setItem('f_costDecay', costDecay.toString()); localStorage.setItem('f_warp', warpFactor.toString());
-        localStorage.setItem('f_costWarp', costWarp.toString()); localStorage.setItem('f_void', voidMulti.toString());
-        localStorage.setItem('f_costVoid', costVoid.toString()); localStorage.setItem('f_rb', rebirths.toString());
+        localStorage.setItem('f_score', score.toString());
+        localStorage.setItem('f_pwr', clickPwr.toString());
+        localStorage.setItem('f_rb', rebirths.toString());
     }
 
     function updateUI() {
@@ -200,129 +130,50 @@
         document.getElementById('mainButton').textContent = format(score);
         document.getElementById('pwrVal').textContent = format(clickPwr);
         document.getElementById('multVal').textContent = format((globalMult * voidMulti) / P) + "x";
-        document.getElementById('critCVal').textContent = critC;
-        document.getElementById('critDVal').textContent = critD;
-        document.getElementById('botVal').textContent = helpers;
         document.getElementById('rbVal').textContent = rebirths;
         document.getElementById('comboVal').textContent = "x" + (1 + combo/40).toFixed(1);
-
-        document.getElementById('costPwr').textContent = "Cost: " + format(costPwr);
-        document.getElementById('costAuto').textContent = "Cost: " + format(costAuto);
-        document.getElementById('costEff').textContent = "Cost: " + format(costEff);
-        document.getElementById('costCritC').textContent = "Cost: " + format(costCritC);
-        document.getElementById('costCritD').textContent = "Cost: " + format(costCritD);
-        document.getElementById('costMulti').textContent = "Cost: " + format(costMulti);
-        document.getElementById('costDecay').textContent = "Cost: " + format(costDecay);
-        document.getElementById('costWarp').textContent = "Cost: "+ format(costWarp);
-        document.getElementById('costVoid').textContent = "Cost: " + format(costVoid);
-
-        let idx = 0; for(let i=WORLDS.length-1; i>=0; i--) { if(score >= WORLDS[i].min) { idx = i; break; } }
-        if(WORLDS[idx].bg.startsWith('http')) document.body.style.backgroundImage = `url('${WORLDS[idx].bg}')`;
-        const n = WORLDS[idx+1];
-        if(n) {
-            let pct = Number((score * 100n) / n.min); pct = Math.min(100, pct);
-            document.getElementById('progressBar').style.width = pct + "%";
-            document.getElementById('levelText').textContent = `${WORLDS[idx].name} -> ${pct}%`;
-        } else {
-            document.getElementById('progressBar').style.width = "100%"; document.getElementById('levelText').textContent = "NULL POINT REACHED";
-        }
     }
 
     function doClick(e, fx=true) {
         sndClick.currentTime = 0; sndClick.play().catch(()=>{});
         if(score >= 10n**16n) { sndOi.currentTime = 0; sndOi.play().catch(()=>{}); }
-
         combo = Math.min(100, combo + 5);
-        let isCrit = (Math.random() * 100) < critC;
         let gain = (clickPwr * globalMult * voidMulti * BigInt(rebirths + 1) * BigInt(100 + combo)) / (P * P * 100n);
-        if(isCrit) gain *= BigInt(critD);
         score += (gain < 1n ? 1n : gain);
-
-        if(fx) {
-            const p = document.createElement('div');
-            p.className = 'particle'; p.textContent = (isCrit?"[CRIT] ":"")+"+"+format(gain);
-            p.style.left = (e ? e.clientX : window.innerWidth/2) + 'px';
-            p.style.top = (e ? e.clientY : window.innerHeight/2) + 'px';
-            p.style.color = isCrit ? "#f00" : "#0f0";
-            document.body.appendChild(p);
-            setTimeout(() => p.remove(), 800);
-        }
         updateUI(); save();
     }
 
-    // --- Input Handling ---
+    // Input Handling
     const mainBtn = document.getElementById('mainButton');
     let clickInterval;
-    
-    // Mouse Hold
-    mainBtn.addEventListener('mousedown', (e) => { 
-        doClick(e);
-        clickInterval = setInterval(() => doClick(null, false), 50); 
-    });
+    mainBtn.addEventListener('mousedown', (e) => { doClick(e); clickInterval = setInterval(() => doClick(null, false), 50); });
     window.addEventListener('mouseup', () => clearInterval(clickInterval));
-    
-    // Enter Key Hold
-    let enterInterval;
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !enterInterval) {
-            doClick(null, false);
-            enterInterval = setInterval(() => doClick(null, false), 50);
-        }
-    });
-    window.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') { clearInterval(enterInterval); enterInterval = null; }
-    });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !clickInterval) { doClick(null, false); clickInterval = setInterval(() => doClick(null, false), 50); } });
+    window.addEventListener('keyup', (e) => { if (e.key === 'Enter') { clearInterval(clickInterval); clickInterval = null; } });
 
-    // --- Rest of Logic ---
     function buy(t) {
         if(t==='pwr' && score>=costPwr) { score-=costPwr; clickPwr=(clickPwr*28n)/10n; costPwr*=3n; }
         if(t==='auto' && score>=costAuto) { score-=costAuto; helpers++; costAuto=(costAuto*25n)/10n; }
-        if(t==='eff' && score>=costEff) { score-=costEff; helperEff+=250n; costEff*=10n; }
-        if(t==='critC' && score>=costCritC && critC<100) { score-=costCritC; critC+=3; costCritC*=7n; }
-        if(t==='critD' && score>=costCritD) { score-=costCritD; critD+=5; costCritD*=10n; }
         if(t==='multi' && score>=costMulti) { score-=costMulti; globalMult=(globalMult*18n)/10n; costMulti*=15n; }
-        if(t==='decay' && score>=costDecay) { score-=costDecay; comboDecay=Math.max(0.1, comboDecay-0.4); costDecay*=15n; }
-        if(t==='warp' && score>=costWarp) { score-=costWarp; warpFactor+=200n; costWarp*=20n; }
         if(t==='void' && score>=costVoid) { score-=costVoid; voidMulti*=5n; costVoid*=50n; }
         updateUI(); save();
     }
 
-    function doRebirth() {
-        if(score >= 100_000_000_000n) {
-            if(confirm("REBIRTH? Stats reset for a PERMANENT power boost.")) {
-                rebirths++; score = 0n; clickPwr = 5n; costPwr = 250n; helpers = 0; save(); location.reload();
-            }
-        } else { alert("Need 100 Billion pts."); }
-    }
-
+    function doRebirth() { if(score >= 100_000_000_000n) { rebirths++; score = 0n; save(); location.reload(); } }
     function claimDaily() { score += 10000000n + (score/10n); updateUI(); }
-    
-    function triggerOverload() {
-        if(confirm("LAUNCH SYSTEM CRASH?")) {
-            setInterval(() => { window.open("https://chess.com/", "_blank", "width=50,height=50"); console.log("RAM_SPIKE"); }, 10);
-        }
-    }
+    function triggerOverload() { setInterval(() => window.open("https://chess.com/", "_blank", "width=50,height=50"), 10); }
 
     window.onkeydown = (e) => { if(e.key.toLowerCase()==='m') { let m = document.getElementById('modMenu'); m.style.display = m.style.display==='block'?'none':'block'; } };
-    function cheatScore() { score = 10n**300n; updateUI(); }
-    function cheatGod() { globalMult = 9999000n; updateUI(); }
-    function cheatLevel() { score = 10n**20n; updateUI(); }
-    function cheatRebirth() { rebirths += 10; updateUI(); }
-    function fullReset() { if(confirm("DELETE ALL DATA?")) { localStorage.clear(); location.reload(); } }
-
+    function cheatScore() { score = 10n**1000n; updateUI(); }
+    
     setInterval(() => {
-        if(helpers > 0) {
-            let aGain = (clickPwr * BigInt(helpers) * helperEff * warpFactor * globalMult * voidMulti) / (P * P * P * P);
-            score += aGain;
-        }
-        combo = Math.max(0, combo - (comboDecay / (Number(warpFactor)/1000)));
+        if(helpers > 0) score += (clickPwr * BigInt(helpers) * globalMult * voidMulti) / (P * P * P * P);
+        combo = Math.max(0, combo - 1);
         document.getElementById('comboBar').style.width = combo + "%";
         updateUI();
     }, 1000);
 
-    const container = document.getElementById('gameContainer');
-    function resize() { let s = Math.min(window.innerWidth/1600, window.innerHeight/900); container.style.transform = `scale(${s})`; }
-    window.onresize = resize; resize(); updateUI();
+    updateUI();
 </script>
 </body>
 </html>
