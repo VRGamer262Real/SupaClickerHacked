@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supa Clicker: Hacked</title>
+    <title>Supa Clicker HACKED</title>
     <link rel="icon" href="https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/ButtonIcon.png">
 
     <style>
@@ -99,7 +99,7 @@
     <button class="mod-btn" onclick="cheatGod()">Activate God Mode Multi</button>
     <button class="mod-btn" onclick="cheatLevel()">Unlock Final Firewall</button>
     <button class="mod-btn" onclick="cheatRebirth()">Spawn 10x Rebirths</button>
-    <div style="font-size: 10px; color: #888; text-align:center;">Press [M] to Close</div>
+    <div style="font-size: 10px; color: #888; text-align:center;">Press [M] to Close Control</div>
 </div>
 
 <div id="gameWrapper">
@@ -137,7 +137,7 @@
             <div class="shop-item" onclick="buy('void')"><b>Dark Web API</b><small>Huge permanent multiplier</small><span id="costVoid" class="cost">500M</span></div>
         </div>
 
-        <div id="mainButton" class="main-button rainbow-strobe" onmousedown="doClick(event)">0</div>
+        <div id="mainButton" class="main-button rainbow-strobe">0</div>
     </div>
 </div>
 
@@ -228,8 +228,7 @@
         }
     }
 
-    function doClick(e) {
-        if(e) e.preventDefault();
+    function doClick(e, fx=true) {
         sndClick.currentTime = 0; sndClick.play().catch(()=>{});
         if(score >= 10n**16n) { sndOi.currentTime = 0; sndOi.play().catch(()=>{}); }
 
@@ -239,10 +238,11 @@
         if(isCrit) gain *= BigInt(critD);
         score += (gain < 1n ? 1n : gain);
 
-        if(e) {
+        if(fx) {
             const p = document.createElement('div');
             p.className = 'particle'; p.textContent = (isCrit?"[CRIT] ":"")+"+"+format(gain);
-            p.style.left = e.clientX + 'px'; p.style.top = e.clientY + 'px';
+            p.style.left = (e ? e.clientX : window.innerWidth/2) + 'px';
+            p.style.top = (e ? e.clientY : window.innerHeight/2) + 'px';
             p.style.color = isCrit ? "#f00" : "#0f0";
             document.body.appendChild(p);
             setTimeout(() => p.remove(), 800);
@@ -250,6 +250,30 @@
         updateUI(); save();
     }
 
+    // --- Input Handling ---
+    const mainBtn = document.getElementById('mainButton');
+    let clickInterval;
+    
+    // Mouse Hold
+    mainBtn.addEventListener('mousedown', (e) => { 
+        doClick(e);
+        clickInterval = setInterval(() => doClick(null, false), 50); 
+    });
+    window.addEventListener('mouseup', () => clearInterval(clickInterval));
+    
+    // Enter Key Hold
+    let enterInterval;
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !enterInterval) {
+            doClick(null, false);
+            enterInterval = setInterval(() => doClick(null, false), 50);
+        }
+    });
+    window.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') { clearInterval(enterInterval); enterInterval = null; }
+    });
+
+    // --- Rest of Logic ---
     function buy(t) {
         if(t==='pwr' && score>=costPwr) { score-=costPwr; clickPwr=(clickPwr*28n)/10n; costPwr*=3n; }
         if(t==='auto' && score>=costAuto) { score-=costAuto; helpers++; costAuto=(costAuto*25n)/10n; }
@@ -279,7 +303,6 @@
         }
     }
 
-    // --- Cheat Functions ---
     window.onkeydown = (e) => { if(e.key.toLowerCase()==='m') { let m = document.getElementById('modMenu'); m.style.display = m.style.display==='block'?'none':'block'; } };
     function cheatScore() { score = 10n**300n; updateUI(); }
     function cheatGod() { globalMult = 9999000n; updateUI(); }
