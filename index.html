@@ -3,176 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supa Clicker: UNLIMITED HACKED</title>
+    <title>Supa Clicker HACKED</title>
     <link rel="icon" href="https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/ButtonIcon.png">
 
     <style>
         :root {
-            --ui-bg: rgba(0, 10, 0, 0.96);
+            --ui-bg: rgba(0, 5, 0, 0.98);
             --hacker-green: #00ff41;
-            --hacker-red: #ff3333;
         }
 
         body {
-            background: black no-repeat center center fixed;
-            background-size: cover;
+            background: black;
             margin: 0; overflow: hidden;
             font-family: 'Courier New', Courier, monospace;
             color: var(--hacker-green);
-            height: 100vh; width: 100vw;
-            display: flex; justify-content: center; align-items: center;
-            user-select: none;
-            transition: background-image 1.2s ease-in-out;
         }
 
-        #gameWrapper { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; overflow: hidden; }
-        #gameContainer { width: 1600px; height: 900px; position: relative; flex-shrink: 0; transform-origin: center center; display: flex; justify-content: center; align-items: center; }
+        /* --- Hacker Overlay --- */
+        #hackerOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0,10,0,0.1), rgba(0,0,0,0.8)); pointer-events: none; z-index: 10000; }
 
-        /* --- Mod Menu --- */
-        #modMenu { position: fixed; top: 10%; left: 2%; width: 280px; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 10px; z-index: 10000; padding: 15px; box-shadow: 0 0 30px var(--hacker-green); display: none; }
-        .mod-btn { width: 100%; padding: 10px; margin: 5px 0; background: #000; border: 1px solid var(--hacker-green); color: var(--hacker-green); cursor: pointer; font-family: inherit; font-size: 11px; }
-        .mod-btn:hover { background: var(--hacker-green); color: #000; }
-
-        /* --- UI Layers --- */
-        .main-button { width: 420px; height: 420px; font-size: 2rem; border: 12px solid white; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; position: relative; text-align: center; background: rgba(0,0,0,0.85); z-index: 10; transition: transform 0.05s; text-shadow: 0 0 10px var(--hacker-green); }
-        .main-button:active { transform: scale(0.92); }
-        .rainbow-strobe { animation: borderRainbow 2s linear infinite; }
-        @keyframes borderRainbow { 0% {border-color: red;} 33% {border-color: green;} 66% {border-color: blue;} 100% {border-color: red;} }
-
-        #topUI { position: absolute; top: 20px; width: 95%; height: 90px; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 15px; display: flex; justify-content: space-around; align-items: center; z-index: 100; }
-        #statsPanel { left: 40px; top: 140px; min-width: 320px; position: absolute; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 12px; padding: 25px; }
-        #shopPanel { right: 40px; top: 140px; bottom: 40px; width: 380px; position: absolute; background: var(--ui-bg); border: 2px solid var(--hacker-green); border-radius: 12px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;}
-
-        .shop-item { background: rgba(0, 255, 0, 0.05); padding: 12px; border-radius: 8px; border: 1px solid #141; cursor: pointer; transition: 0.2s; }
-        .shop-item:hover { background: rgba(0, 255, 0, 0.15); transform: translateX(-5px); }
-        .shop-item b { color: var(--hacker-green); font-size: 1.1rem; }
-        .cost { color: #ffeb3b; font-weight: bold; margin-top: 5px; display: block; }
+        #gameWrapper { display: flex; justify-content: center; align-items: center; width: 100vw; height: 100vh; }
         
-        .particle { position: fixed; pointer-events: none; font-weight: bold; font-size: 2.2rem; animation: pMove 0.8s forwards; z-index: 1000; }
-        @keyframes pMove { 0% { opacity:1; } 100% { opacity:0; transform: translateY(-160px) scale(1.4); } }
-        #cbCont { width: 100%; height: 8px; background: #020; border-radius: 4px; margin-top: 5px; overflow: hidden; }
-        #comboBar { width: 0%; height: 100%; background: #0af; }
+        #modMenu { position: fixed; top: 5%; left: 2%; width: 260px; background: var(--ui-bg); border: 1px solid var(--hacker-green); padding: 15px; z-index: 20000; display: none; }
+        .mod-btn { width: 100%; padding: 8px; margin: 3px 0; background: #000; border: 1px solid var(--hacker-green); color: var(--hacker-green); cursor: pointer; font-size: 10px; }
+
+        .main-button {
+            width: 400px; height: 400px; font-size: 2.5rem; border: 8px solid var(--hacker-green); border-radius: 50%;
+            background: #000; color: #fff; cursor: pointer; text-shadow: 0 0 10px var(--hacker-green);
+            z-index: 10;
+        }
+
+        #statsPanel, #shopPanel { position: absolute; background: var(--ui-bg); border: 1px solid var(--hacker-green); padding: 20px; }
+        #statsPanel { left: 5%; top: 15%; width: 300px; }
+        #shopPanel { right: 5%; top: 15%; bottom: 5%; width: 350px; overflow-y: auto; }
+
+        .shop-item { border: 1px solid #141; padding: 10px; margin-bottom: 8px; cursor: pointer; }
+        .shop-item:hover { border-color: var(--hacker-green); background: rgba(0,255,0,0.05); }
+        .cost { color: #ffeb3b; font-weight: bold; }
     </style>
 </head>
 <body>
 
+<div id="hackerOverlay"></div>
 <div id="modMenu">
-    <h2 style="text-align: center; margin:0 0 10px 0;">[ MOD MENU ]</h2>
+    <h3 style="text-align:center;">[ MOD MENU ]</h3>
     <button class="mod-btn" onclick="cheatScore()">Inject Infinite Cash</button>
-    <button class="mod-btn" onclick="cheatGod()">Activate God Mode Multi</button>
-    <button class="mod-btn" onclick="cheatLevel()">Unlock Final Firewall</button>
-    <button class="mod-btn" onclick="cheatRebirth()">Spawn 10x Rebirths</button>
+    <button class="mod-btn" onclick="cheatGod()">God Mode Multi</button>
 </div>
 
 <div id="gameWrapper">
-    <div id="gameContainer">
-        <div id="topUI">
-            <button onclick="claimDaily()" style="background:#030; color:#0f0; border:1px solid #0f0; padding:10px; cursor:pointer;">DAILY INJECTION</button>
-            <button id="rebirthBtn" onclick="doRebirth()" style="background:#004; color:#0af; border:1px solid #0af; padding:10px; cursor:pointer;">REBIRTH</button>
-            <button onclick="triggerOverload()" style="background:#400; color:#f00; border:1px solid #f00; padding:10px; cursor:pointer; font-weight:bold;">OVERLOAD</button>
-        </div>
+    <div id="statsPanel">
+        <h2>UPLINK STATUS</h2>
+        <div id="scoreLabel" style="font-size: 2rem;">0</div>
+        <p>Power: <span id="pwrVal">5</span></p>
+        <p>Multiplier: <span id="multVal">1x</span></p>
+        <p>Bots: <span id="botVal">0</span></p>
+        <button onclick="doRebirth()">REBIRTH</button>
+    </div>
 
-        <div id="statsPanel">
-            <h2 style="margin:0 0 15px 0; border-bottom:1px solid #0f0;">UPLINK STATUS</h2>
-            <div id="scoreLabel" style="font-size: 2.5rem; margin-bottom: 20px; color: white; text-shadow: 0 0 10px #0f0;">0</div>
-            <div><b>Power:</b> <span id="pwrVal">5</span></div>
-            <div><b>Multiplier:</b> <span id="multVal">1.0x</span></div>
-            <div><b>Combo:</b> <span id="comboVal">x1.0</span></div>
-            <div id="cbCont"><div id="comboBar"></div></div>
-            <div><b>Rebirths:</b> <span id="rbVal">0</span></div>
-        </div>
+    <button id="mainButton" class="main-button" onmousedown="doClick(event)">0</button>
 
-        <div id="shopPanel">
-            <h3 style="text-align:center; margin:0 0 10px 0;">[ SHOP: EXPLOITS ]</h3>
-            <div class="shop-item" onclick="buy('pwr')"><b>Root Surge</b><small>+2.8x Manual Strength</small><span id="costPwr" class="cost">250</span></div>
-            <div class="shop-item" onclick="buy('auto')"><b>Botnet Node</b><small>Automated injection</small><span id="costAuto" class="cost">500</span></div>
-            <div class="shop-item" onclick="buy('multi')"><b>SQL Injection</b><small>Global Point Multiplier</small><span id="costMulti" class="cost">10k</span></div>
-            <div class="shop-item" onclick="buy('void')"><b>Dark Web API</b><small>Huge permanent multiplier</small><span id="costVoid" class="cost">500M</span></div>
-        </div>
-
-        <div id="mainButton" class="main-button rainbow-strobe">0</div>
+    <div id="shopPanel">
+        <h3>EXPLOITS</h3>
+        <div class="shop-item" onclick="buy('pwr')"><b>Surge</b><br><span id="costPwr" class="cost">250</span></div>
+        <div class="shop-item" onclick="buy('auto')"><b>Botnet</b><br><span id="costAuto" class="cost">500</span></div>
+        <div class="shop-item" onclick="buy('multi')"><b>SQL Injection</b><br><span id="costMulti" class="cost">10k</span></div>
+        <div class="shop-item" onclick="buy('void')"><b>Dark Web API</b><br><span id="costVoid" class="cost">500M</span></div>
     </div>
 </div>
 
 <script>
-    const P = 1000n;
+    let score = BigInt(localStorage.getItem('f_score') || "0");
+    let clickPwr = BigInt(localStorage.getItem('f_pwr') || "5");
+    let cPwr = BigInt(localStorage.getItem('f_cpPwr') || "250");
+    let helpers = parseInt(localStorage.getItem('f_helpers') || "0");
+    let cAuto = BigInt(localStorage.getItem('f_cpAuto') || "500");
+    let mult = BigInt(localStorage.getItem('f_mult') || "1000"); // P is 1000n, so 1x
+    let cMult = BigInt(localStorage.getItem('f_cpMult') || "10000");
+
     const sndClick = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/Mouseclick.wav");
     const sndOi = new Audio("https://raw.githubusercontent.com/zOcMYT/supaclicker.github.io/main/oi%20oi%20oe%20oi%20a%20eye%20eye.mp3");
 
-    let score = BigInt(localStorage.getItem('f_score') || "0");
-    let clickPwr = BigInt(localStorage.getItem('f_pwr') || "5");
-    let costPwr = BigInt(localStorage.getItem('f_costPwr') || "250");
-    let helpers = parseInt(localStorage.getItem('f_helpers') || "0");
-    let costAuto = BigInt(localStorage.getItem('f_costAuto') || "500");
-    let globalMult = BigInt(localStorage.getItem('f_multi') || "1000");
-    let costMulti = BigInt(localStorage.getItem('f_costMulti') || "10000");
-    let voidMulti = BigInt(localStorage.getItem('f_void') || "1000");
-    let costVoid = BigInt(localStorage.getItem('f_costVoid') || "500000000");
-    let rebirths = parseInt(localStorage.getItem('f_rb') || "0");
-    let combo = 0;
-
-    // --- IMPROVED FORMATTER FOR BIGINT ---
+    // --- INFINITE FMT ---
     function format(n) {
         if (n < 1000000000000n) return n.toLocaleString();
         let s = n.toString();
-        let e = s.length - 1;
-        return s.substring(0, 3) + "." + s.substring(3, 5) + "e+" + e;
-    }
-
-    function save() {
-        localStorage.setItem('f_score', score.toString());
-        localStorage.setItem('f_pwr', clickPwr.toString());
-        localStorage.setItem('f_rb', rebirths.toString());
+        return `${s.substring(0, 3)}.${s.substring(3, 5)}e+${s.length - 1}`;
     }
 
     function updateUI() {
         document.getElementById('scoreLabel').textContent = format(score);
         document.getElementById('mainButton').textContent = format(score);
         document.getElementById('pwrVal').textContent = format(clickPwr);
-        document.getElementById('multVal').textContent = format((globalMult * voidMulti) / P) + "x";
-        document.getElementById('rbVal').textContent = rebirths;
-        document.getElementById('comboVal').textContent = "x" + (1 + combo/40).toFixed(1);
+        document.getElementById('multVal').textContent = (mult/1000n) + "x";
+        document.getElementById('botVal').textContent = helpers;
+        document.getElementById('costPwr').textContent = format(cPwr);
+        document.getElementById('costAuto').textContent = format(cAuto);
+        document.getElementById('costMulti').textContent = format(cMult);
     }
 
-    function doClick(e, fx=true) {
+    function doClick(e) {
         sndClick.currentTime = 0; sndClick.play().catch(()=>{});
         if(score >= 10n**16n) { sndOi.currentTime = 0; sndOi.play().catch(()=>{}); }
-        combo = Math.min(100, combo + 5);
-        let gain = (clickPwr * globalMult * voidMulti * BigInt(rebirths + 1) * BigInt(100 + combo)) / (P * P * 100n);
-        score += (gain < 1n ? 1n : gain);
-        updateUI(); save();
+        score += (clickPwr * mult) / 1000n;
+        updateUI();
     }
 
     // Input Handling
-    const mainBtn = document.getElementById('mainButton');
-    let clickInterval;
-    mainBtn.addEventListener('mousedown', (e) => { doClick(e); clickInterval = setInterval(() => doClick(null, false), 50); });
-    window.addEventListener('mouseup', () => clearInterval(clickInterval));
-    window.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !clickInterval) { doClick(null, false); clickInterval = setInterval(() => doClick(null, false), 50); } });
-    window.addEventListener('keyup', (e) => { if (e.key === 'Enter') { clearInterval(clickInterval); clickInterval = null; } });
+    let interval;
+    function startClicking() { doClick(); interval = setInterval(doClick, 50); }
+    document.getElementById('mainButton').addEventListener('mousedown', startClicking);
+    window.addEventListener('mouseup', () => clearInterval(interval));
+    window.addEventListener('keydown', (e) => { if(e.key === 'Enter' && !interval) startClicking(); });
+    window.addEventListener('keyup', (e) => { if(e.key === 'Enter') clearInterval(interval); });
 
     function buy(t) {
-        if(t==='pwr' && score>=costPwr) { score-=costPwr; clickPwr=(clickPwr*28n)/10n; costPwr*=3n; }
-        if(t==='auto' && score>=costAuto) { score-=costAuto; helpers++; costAuto=(costAuto*25n)/10n; }
-        if(t==='multi' && score>=costMulti) { score-=costMulti; globalMult=(globalMult*18n)/10n; costMulti*=15n; }
-        if(t==='void' && score>=costVoid) { score-=costVoid; voidMulti*=5n; costVoid*=50n; }
-        updateUI(); save();
+        if(t==='pwr' && score>=cPwr) { score-=cPwr; clickPwr+=10n; cPwr*=2n; }
+        if(t==='auto' && score>=cAuto) { score-=cAuto; helpers++; cAuto*=2n; }
+        if(t==='multi' && score>=cMult) { score-=cMult; mult+=1000n; cMult*=10n; }
+        updateUI();
     }
 
-    function doRebirth() { if(score >= 100_000_000_000n) { rebirths++; score = 0n; save(); location.reload(); } }
-    function claimDaily() { score += 10000000n + (score/10n); updateUI(); }
-    function triggerOverload() { setInterval(() => window.open("https://chess.com/", "_blank", "width=50,height=50"), 10); }
-
+    function doRebirth() { if(score >= 10n**11n) { score = 0n; updateUI(); } }
     window.onkeydown = (e) => { if(e.key.toLowerCase()==='m') { let m = document.getElementById('modMenu'); m.style.display = m.style.display==='block'?'none':'block'; } };
-    function cheatScore() { score = 10n**1000n; updateUI(); }
-    
-    setInterval(() => {
-        if(helpers > 0) score += (clickPwr * BigInt(helpers) * globalMult * voidMulti) / (P * P * P * P);
-        combo = Math.max(0, combo - 1);
-        document.getElementById('comboBar').style.width = combo + "%";
-        updateUI();
-    }, 1000);
+    function cheatScore() { score = 10n**500n; updateUI(); }
+    function cheatGod() { mult = 10000000n; updateUI(); }
 
+    setInterval(() => { if(helpers > 0) score += (clickPwr * mult) / 1000n; updateUI(); }, 1000);
     updateUI();
 </script>
 </body>
